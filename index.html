@@ -330,6 +330,10 @@
       gap: 2px;
     }
 
+    .nav-scroll-hint {
+      display: none;
+    }
+
     .nav-item {
       position: relative;
     }
@@ -392,26 +396,6 @@
       height: 3px;
       background-color: var(--gold-accent);
       border-radius: 3px 3px 0 0;
-    }
-
-    /* Mobile Hamburger Toggle */
-    .mobile-menu-btn {
-      display: none;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: var(--text-white);
-      font-size: 1.25rem;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin: 8px 0;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .mobile-menu-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--gold-accent);
     }
 
     /* ==========================================================================
@@ -1611,42 +1595,48 @@
     }
 
     @media (max-width: 1100px) {
-      .mobile-menu-btn {
-        display: inline-flex;
-      }
-
       .main-nav {
         flex-direction: column;
         align-items: stretch;
+        position: relative;
       }
 
       .nav-list {
-        display: none;
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
         align-items: stretch;
+        justify-content: flex-start;
+        gap: 2px;
         width: 100%;
-        padding: 8px 0 14px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 8px 4px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
       }
 
-      .nav-list.open {
-        display: flex;
+      .nav-list::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-item {
+        flex: 0 0 auto;
       }
 
       .nav-link {
-        padding: 12px 18px;
-        border-radius: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 12px 14px;
+        white-space: nowrap;
       }
 
       .nav-link.active::after {
-        left: 0;
-        right: auto;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        height: 100%;
-        border-radius: 0;
+        left: 12px;
+        right: 12px;
+        top: auto;
+        bottom: -3px;
+        width: auto;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
       }
 
       .brand-container {
@@ -1669,7 +1659,172 @@
       }
     }
 
+    @media (min-width: 768px) and (max-width: 1100px) {
+      .nav-scroll-hint {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 2px;
+        align-items: center;
+        justify-content: flex-end;
+        width: 42px;
+        height: 36px;
+        padding-left: 18px;
+        color: var(--gold-accent);
+        background: linear-gradient(90deg, rgba(0, 66, 39, 0), var(--lasalle-green) 45%);
+        transform: translateY(-50%);
+        opacity: 1;
+        visibility: visible;
+        transition: opacity var(--transition-fast), visibility var(--transition-fast);
+        pointer-events: none;
+      }
+      .nav-scroll-hint.hidden {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .nav-scroll-hint-left {
+        left: 2px;
+        right: auto;
+        justify-content: flex-start;
+        padding-right: 18px;
+        padding-left: 8px;
+        background: linear-gradient(270deg, rgba(0, 66, 39, 0), var(--lasalle-green) 45%);
+      }
+      .container {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      .utility-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .utility-contacts,
+      .utility-links {
+        width: auto;
+      }
+      .utility-contacts {
+        gap: 16px;
+        flex: 1 1 auto;
+      }
+      .utility-links {
+        gap: 14px;
+        flex: 0 0 auto;
+      }
+      .utility-links a {
+        white-space: nowrap;
+      }
+      .nav-list {
+        justify-content: center;
+        padding: 8px 12px;
+      }
+      .nav-link {
+        padding: 11px 12px;
+        font-size: 0.8rem;
+      }
+      .brand-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .brand-identity {
+        align-items: center;
+      }
+      .header-quick-actions {
+        width: auto;
+        justify-content: flex-end;
+      }
+      .hero-section {
+        padding-top: 48px;
+        padding-bottom: 44px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .brand-identity {
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .nav-scroll-hint {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 2px;
+        align-items: center;
+        justify-content: flex-end;
+        width: 42px;
+        height: 36px;
+        padding-left: 18px;
+        color: var(--gold-accent);
+        background: linear-gradient(90deg, rgba(0, 66, 39, 0), var(--lasalle-green) 45%);
+        transform: translateY(-50%);
+        opacity: 1;
+        visibility: visible;
+        transition: opacity var(--transition-fast), visibility var(--transition-fast);
+        pointer-events: none;
+      }
+      .nav-scroll-hint.hidden {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .nav-scroll-hint-left {
+        left: 2px;
+        right: auto;
+        justify-content: flex-start;
+        padding-right: 18px;
+        padding-left: 8px;
+        background: linear-gradient(270deg, rgba(0, 66, 39, 0), var(--lasalle-green) 45%);
+      }
+      .utility-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 12px;
+      }
+      .utility-contacts {
+        width: auto;
+        min-width: 0;
+      }
+      .utility-links {
+        width: auto;
+        align-items: flex-end;
+        text-align: right;
+      }
+      .utility-links a:last-child {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2px;
+      }
+    }
+
     @media (max-width: 580px) {
+      .nav-list {
+        padding: 4px 2px;
+      }
+      .nav-link {
+        gap: 4px;
+        padding: 9px 10px;
+        font-size: 0.76rem;
+      }
+      .nav-link i {
+        font-size: 0.78rem;
+      }
+      .programs-nav-link,
+      .calendar-nav-link {
+        white-space: normal;
+      }
+      .programs-nav-link span,
+      .calendar-nav-link span {
+        width: 66px;
+        white-space: normal;
+        line-height: 1.1;
+        text-align: center;
+      }
       .info-grid {
         grid-template-columns: 1fr;
       }
@@ -1686,8 +1841,29 @@
         grid-template-columns: 1fr;
       }
       .utility-inner {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .utility-contacts {
+        width: auto;
+        flex: 1 1 auto;
         flex-direction: column;
         align-items: flex-start;
+        gap: 6px;
+      }
+      .utility-links {
+        width: auto;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 6px;
+        text-align: right;
+      }
+      .utility-contacts span,
+      .utility-links a {
+        line-height: 1.35;
       }
       .footer-bottom {
         flex-direction: column;
@@ -1750,21 +1926,20 @@
   <div class="navbar-wrapper">
     <div class="container">
       <nav class="main-nav" aria-label="Main Navigation">
-        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu">
-          <i class="fas fa-bars"></i> Menu Navigation
-        </button>
         <ul class="nav-list" id="mainNavList">
           <li class="nav-item"><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
           <li class="nav-item"><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About CCS</a></li>
-          <li class="nav-item"><a href="#programs" class="nav-link"><i class="fas fa-laptop-code"></i> Programs Offered</a></li>
+          <li class="nav-item"><a href="#programs" class="nav-link programs-nav-link"><i class="fas fa-laptop-code"></i> <span>Programs Offered</span></a></li>
           <li class="nav-item"><a href="#resources" class="nav-link"><i class="fas fa-book-reader"></i> Resources</a></li>
-          <li class="nav-item"><a href="#calendar" class="nav-link"><i class="fas fa-calendar-alt"></i> Academic Calendar</a></li>
+          <li class="nav-item"><a href="#calendar" class="nav-link calendar-nav-link"><i class="fas fa-calendar-alt"></i> <span>Academic Calendar</span></a></li>
           <li class="nav-item"><a href="#faculty" class="nav-link" data-tab="faculty-directory"><i class="fas fa-chalkboard-teacher"></i> Faculty &amp; Staff</a></li>
           <li class="nav-item"><a href="#students" class="nav-link" data-tab="student-population"><i class="fas fa-user-graduate"></i> Students</a></li>
           <li class="nav-item"><a href="#students-activity-gallery" class="nav-link" data-tab="students-activity-gallery"><i class="fas fa-images"></i> Gallery</a></li>
           <li class="nav-item"><a href="#official-downloads" class="nav-link" data-tab="official-downloads"><i class="fas fa-file-download"></i> Downloads</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope-open-text"></i> Contact Us</a></li>
         </ul>
+        <span class="nav-scroll-hint nav-scroll-hint-left hidden" id="navScrollLeftHint" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+        <span class="nav-scroll-hint" id="navScrollHint" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
       </nav>
     </div>
   </div>
@@ -1806,12 +1981,6 @@
           </div>
         </div>
 
-        <!-- ─── PHOTO 1 CONTAINER: Hero Banner / Campus Image ─── -->
-        <!--
-          INSTRUCTION FOR LOCAL PHOTO INSERTION:
-          Paste your local image path into the src="" attribute below (e.g. src="Building.jpg" or src="School Name.jpg").
-          If src is left empty, the styled Lasallian CSS fallback card automatically displays!
-        -->
         <div class="photo-container hero-photo-wrapper">
           <img src="Building.jpg" alt="DLSJBC College of Computer Studies Campus Building" onerror="this.style.display='none'">
           <div class="photo-fallback">
@@ -1819,11 +1988,7 @@
             <h4>DLSJBC CCS Main Campus</h4>
             <p>Paste local file in <code>src="Building.jpg"</code> to display custom campus banner photo.</p>
           </div>
-          <div class="photo-badge">
-            <i class="fas fa-camera"></i> DLSJBC Computer Studies Facility
-          </div>
         </div>
-        <!-- ─── END PHOTO 1 CONTAINER ─── -->
 
       </div>
     </div>
@@ -1874,12 +2039,6 @@
     <div class="container">
       <div class="about-grid">
 
-        <!-- ─── PHOTO 2 CONTAINER: Dean's Message / Featured Activity Image ─── -->
-        <!--
-          INSTRUCTION FOR LOCAL PHOTO INSERTION:
-          Paste your local image path into the src="" attribute below (e.g. src="School Name.jpg").
-          If src is left empty, the styled Lasallian CSS fallback card automatically displays!
-        -->
         <div class="photo-container about-photo-wrapper">
           <img src="School Name.jpg" alt="De La Salle John Bosco College Logo &amp; Identity" onerror="this.style.display='none'">
           <div class="photo-fallback">
@@ -1887,11 +2046,7 @@
             <h4>Dean's Welcome &amp; Faculty Leadership</h4>
             <p>Paste local file in <code>src="School Name.jpg"</code> to display secondary featured photo.</p>
           </div>
-          <div class="photo-badge">
-            <i class="fas fa-user-shield"></i> Office of the College Dean
-          </div>
         </div>
-        <!-- ─── END PHOTO 2 CONTAINER ─── -->
 
         <div class="about-content">
           <span class="section-eyebrow">Excellence in Computing</span>
@@ -2184,26 +2339,26 @@
           <div class="faculty-card">
             <img class="faculty-avatar" src="Ms. Glogerlie Jumandos.jpg" alt="Ms. Glogerlie Jumandos">
             <h4 class="faculty-name">Ms. Glogerlie Jumandos</h4>
-            <div class="faculty-role">Dean, College of Computer Studies</div>
-            <div class="faculty-dept">Dean</div>
+            <div class="faculty-role">Dean</div>
+            <div class="faculty-dept">College Of Computer Studies</div>
           </div>
           <div class="faculty-card">
             <img class="faculty-avatar" src="Ms. Ronalyn Goyo.jpg" alt="Ms. Ronalyn Goyo">
             <h4 class="faculty-name">Ms. Ronalyn Goyo</h4>
-            <div class="faculty-role">Person In Charge</div>
-            <div class="faculty-dept">PIC Of College Of Computer Studies</div>
+            <div class="faculty-role">PIC</div>
+            <div class="faculty-dept">College Of Computer Studies</div>
           </div>
           <div class="faculty-card">
             <img class="faculty-avatar" src="Mr. Lawrence Libar.jpg" alt="Mr. Lawrence Libar">
             <h4 class="faculty-name">Mr. Lawrence Libar</h4>
             <div class="faculty-role">Moderator</div>
-            <div class="faculty-dept">Moderator Of The College Of Computer Studies</div>
+            <div class="faculty-dept">College Of Computer Studies</div>
           </div>
           <div class="faculty-card">
             <img class="faculty-avatar" src="Mr. Dether John Olaguir.jpg" alt="Mr. Dether John Olaguir">
             <h4 class="faculty-name">Mr. Dether John Olaguir</h4>
             <div class="faculty-role">Faculty</div>
-            <div class="faculty-dept">Faculty Of College Of Computer Studies</div>
+            <div class="faculty-dept">College Of Computer Studies</div>
           </div>
         </div>
       </div>
@@ -2409,21 +2564,27 @@
        11. JAVASCRIPT MICRO-INTERACTIONS & NAVIGATION CONTROLLER
        ========================================================================= -->
   <script>
-    // 1. Mobile Menu Drawer Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuToggle');
     const mainNavList = document.getElementById('mainNavList');
+    const navScrollHint = document.getElementById('navScrollHint');
+    const navScrollLeftHint = document.getElementById('navScrollLeftHint');
 
-    if (mobileMenuBtn && mainNavList) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mainNavList.classList.toggle('open');
-        const isOpen = mainNavList.classList.contains('open');
-        mobileMenuBtn.innerHTML = isOpen
-          ? '<i class="fas fa-times"></i> Close Menu'
-          : '<i class="fas fa-bars"></i> Menu Navigation';
-      });
+    function updateNavScrollHint() {
+      if (!mainNavList || !navScrollHint || !navScrollLeftHint) return;
+
+      const hasMoreLinks = mainNavList.scrollWidth > mainNavList.clientWidth + 4;
+      const reachedEnd = mainNavList.scrollLeft + mainNavList.clientWidth >= mainNavList.scrollWidth - 4;
+      const isAtStart = mainNavList.scrollLeft <= 4;
+      navScrollHint.classList.toggle('hidden', !hasMoreLinks || !isAtStart || reachedEnd);
+      navScrollLeftHint.classList.toggle('hidden', !hasMoreLinks || isAtStart);
     }
 
-    // 2. Interactive Navigation Link Active States
+    if (mainNavList) {
+      mainNavList.addEventListener('scroll', updateNavScrollHint, { passive: true });
+      window.addEventListener('resize', updateNavScrollHint);
+      updateNavScrollHint();
+    }
+
+    // Interactive Navigation Link Active States
     const navLinks = document.querySelectorAll('.nav-link');
 
     function setActiveNavLink(route) {
@@ -2457,12 +2618,6 @@
           void document.body.offsetWidth;
           document.body.classList.add('page-transitioning');
           window.setTimeout(() => document.body.classList.remove('page-transitioning'), 450);
-
-          // Close the menu before measuring the sticky header height.
-          if (mainNavList.classList.contains('open')) {
-            mainNavList.classList.remove('open');
-            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i> Menu Navigation';
-          }
 
           const scrollTarget = tabId ? document.querySelector('.tabs-section') : targetSection;
           if (scrollTarget) {
