@@ -171,6 +171,54 @@
       color: var(--gold-accent);
     }
 
+    .utility-session {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .utility-user-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .utility-user-pill i {
+      color: var(--gold-accent);
+    }
+
+    .utility-logout {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: #FFFFFF;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .utility-logout:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+    }
+
     .utility-badge {
       background: var(--gold-accent);
       color: var(--lasalle-green-dark);
@@ -179,6 +227,532 @@
       padding: 2px 8px;
       border-radius: 999px;
       margin-left: 4px;
+    }
+
+    .page-shell {
+      transition: filter var(--transition-normal), opacity var(--transition-normal);
+    }
+
+    body.auth-locked .page-shell {
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+      transition: opacity var(--transition-normal), visibility var(--transition-normal);
+    }
+
+    .auth-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .logout-confirm-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(7, 85, 31, 0.42);
+      backdrop-filter: blur(6px);
+      z-index: 2100;
+    }
+
+    .logout-confirm-overlay.hidden {
+      display: none;
+    }
+
+    .logout-confirm-modal {
+      width: min(100%, 390px);
+      padding: 26px;
+      background: var(--bg-card);
+      border: 1px solid rgba(7, 85, 31, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(7, 85, 31, 0.2);
+      text-align: center;
+    }
+
+    .logout-confirm-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--lasalle-green);
+      background: var(--lasalle-green-subtle);
+      font-size: 1.35rem;
+    }
+
+    .logout-confirm-modal h2 {
+      margin-bottom: 6px;
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+    }
+
+    .logout-confirm-modal p {
+      margin-bottom: 20px;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+    }
+
+    .logout-confirm-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .logout-confirm-actions button {
+      min-height: 42px;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .logout-cancel-btn {
+      color: var(--lasalle-green);
+      background: transparent;
+      border: 1.5px solid var(--lasalle-green);
+    }
+
+    .logout-cancel-btn:hover {
+      background: var(--lasalle-green-subtle);
+    }
+
+    .logout-confirm-btn {
+      color: #FFFFFF;
+      background: var(--lasalle-green);
+      border: 1.5px solid var(--lasalle-green);
+    }
+
+    .logout-confirm-btn:hover {
+      background: var(--lasalle-green-dark);
+    }
+
+    .auth-modal {
+      width: min(100%, 430px);
+      max-height: calc(100vh - 40px);
+      max-height: calc(100dvh - 40px);
+      background: var(--bg-card);
+      border: 1px solid rgba(7, 85, 31, 0.12);
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(7, 85, 31, 0.2);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auth-modal-header {
+      background: linear-gradient(135deg, var(--lasalle-green-dark) 0%, var(--lasalle-green) 100%);
+      color: #FFFFFF;
+      padding: 26px 26px 18px;
+      text-align: center;
+      flex: 0 0 auto;
+    }
+
+    .auth-modal-badge {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 12px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 2rem;
+      overflow: hidden;
+    }
+
+    .auth-modal-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .auth-modal-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.7rem, 3vw, 2.15rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 4px;
+    }
+
+    .auth-modal-header p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .auth-modal-body {
+      min-height: 0;
+      overflow-y: auto;
+      padding: 22px 24px 24px;
+      background: #FFFFFF;
+      scrollbar-width: thin;
+    }
+
+    .auth-switch {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 6px;
+      margin-bottom: 18px;
+    }
+
+    .auth-switch button {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 10px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .auth-switch button.active {
+      background: #FFFFFF;
+      color: var(--lasalle-green-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .auth-panel {
+      display: none;
+    }
+
+    .auth-panel.active {
+      display: block;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .auth-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+
+    .auth-field label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .auth-field-hint {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+
+    .auth-field input {
+      width: 100%;
+      border: 1px solid var(--border-color);
+      background: var(--bg-main);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--text-dark);
+      transition: var(--transition-fast);
+    }
+
+    .auth-field input:focus {
+      outline: none;
+      border-color: var(--lasalle-green);
+      box-shadow: 0 0 0 3px rgba(0, 133, 43, 0.12);
+      background: #FFFFFF;
+    }
+
+    .auth-field input.invalid {
+      border-color: #C62828;
+      background: #FFF5F5;
+    }
+
+    .auth-password-meter {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .auth-password-meter span {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      transition: all var(--transition-fast);
+    }
+
+    .auth-password-meter span.active {
+      background: var(--lasalle-green);
+      border-color: var(--lasalle-green);
+    }
+
+    .auth-password-meter span.weak {
+      background: #E53935;
+      border-color: #E53935;
+    }
+
+    .auth-password-meter span.medium {
+      background: #F59E0B;
+      border-color: #F59E0B;
+    }
+
+    .auth-password-meter span.strong {
+      background: #16A34A;
+      border-color: #16A34A;
+    }
+
+    .password-strength-label,
+    .password-match {
+      min-height: 18px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .password-strength-label.weak,
+    .password-match.no {
+      color: #C62828;
+    }
+
+    .password-strength-label.medium {
+      color: #B45309;
+    }
+
+    .password-strength-label.strong,
+    .password-match.ok {
+      color: #15803D;
+    }
+
+    .auth-error {
+      display: none;
+      color: #C62828;
+      background: #FFF1F1;
+      border: 1px solid rgba(198, 40, 40, 0.15);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .auth-error.show {
+      display: block;
+    }
+
+    .demo-user-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .demo-user-btn {
+      border: 1px solid var(--border-color);
+      background: var(--lasalle-green-subtle);
+      color: var(--lasalle-green-dark);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .demo-user-btn:hover {
+      background: var(--gold-light);
+      border-color: rgba(0, 90, 54, 0.2);
+    }
+
+    .auth-btn-primary {
+      margin-top: 4px;
+      width: 100%;
+      background: var(--lasalle-green);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0, 133, 43, 0.18);
+      transition: var(--transition-fast);
+    }
+
+    .auth-btn-primary:hover {
+      background: var(--lasalle-green-dark);
+      transform: translateY(-1px);
+    }
+
+    .auth-btn-secondary {
+      background: transparent;
+      color: var(--lasalle-green);
+      border: 1.5px solid var(--lasalle-green);
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .auth-btn-secondary:hover {
+      background: var(--lasalle-green-subtle);
+    }
+
+    .auth-link-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .auth-link-btn {
+      background: none;
+      border: none;
+      color: var(--lasalle-green);
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .auth-legal {
+      margin-top: 12px;
+      font-size: 0.72rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .auth-status-note {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--lasalle-green-dark);
+      background: var(--lasalle-green-subtle);
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(16px);
+      opacity: 0;
+      background: rgba(23, 53, 31, 0.96);
+      color: #FFFFFF;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: var(--shadow-md);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+      z-index: 2100;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (min-width: 860px) {
+      .auth-modal {
+        display: flex;
+        flex-direction: row;
+        width: min(100%, 920px);
+        min-height: 560px;
+      }
+
+      .auth-modal-header {
+        width: 38%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 32px 26px;
+      }
+
+      .auth-modal-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px 34px;
+      }
+
+      .auth-switch {
+        margin-bottom: 20px;
+      }
+
+      .auth-panel {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .auth-modal {
+        width: min(100%, 380px);
+      }
+
+      .auth-modal-header {
+        padding: 16px 18px 12px;
+      }
+
+      .auth-modal-badge {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 8px;
+        border-radius: 12px;
+      }
+
+      .auth-modal-header h2 {
+        font-size: 1.35rem;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      .auth-modal-header p {
+        font-size: 0.68rem;
+        letter-spacing: 0.03em;
+      }
+
+      .auth-switch {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     /* ==========================================================================
@@ -264,6 +838,96 @@
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+
+    .admin-console {
+      display: none;
+      padding: 18px 0;
+      background: var(--lasalle-green-subtle);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    body.admin-mode .admin-console {
+      display: block;
+    }
+
+    .admin-console-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .admin-console-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--lasalle-green-dark);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .admin-console-title i {
+      color: var(--gold-accent);
+    }
+
+    .admin-console-status {
+      color: var(--lasalle-green-dark);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .admin-console-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .admin-console-action {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 10px;
+      border: 1px solid rgba(0, 90, 54, 0.16);
+      border-radius: 9px;
+      background: var(--bg-card);
+      color: var(--lasalle-green-dark);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-align: left;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .admin-console-action:hover {
+      border-color: var(--lasalle-green);
+      background: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .admin-console-action i {
+      color: var(--lasalle-green);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1024px) {
+      .admin-console-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 580px) {
+      .admin-console-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .admin-console-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .header-btn {
@@ -1696,22 +2360,38 @@
         padding-right: 32px;
       }
       .utility-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        justify-content: normal;
+        column-gap: 12px;
+        row-gap: 0;
       }
       .utility-contacts,
       .utility-links {
         width: auto;
       }
       .utility-contacts {
-        gap: 16px;
-        flex: 1 1 auto;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        gap: 6px;
+        flex-direction: column;
+        align-items: flex-start;
       }
       .utility-links {
-        gap: 14px;
-        flex: 0 0 auto;
+        grid-column: 2;
+        grid-row: 1;
+        gap: 10px;
+        flex: none;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        row-gap: 8px;
+      }
+      .utility-session {
+        grid-column: 2;
+        grid-row: 2;
+        width: auto;
+        justify-content: flex-end;
       }
       .utility-links a {
         white-space: nowrap;
@@ -1781,24 +2461,35 @@
       }
       .utility-inner {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         align-items: start;
         gap: 12px;
       }
       .utility-contacts {
-        width: auto;
+        width: 100%;
         min-width: 0;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
       }
       .utility-links {
-        width: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 6px;
         align-items: flex-end;
         text-align: right;
       }
+      .utility-session {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-content: flex-end;
+        align-items: center;
+      }
       .utility-links a:last-child {
         display: inline-flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 2px;
       }
     }
 
@@ -1841,25 +2532,29 @@
         grid-template-columns: 1fr;
       }
       .utility-inner {
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        justify-content: flex-start;
         gap: 10px;
       }
       .utility-contacts {
-        width: auto;
-        flex: 1 1 auto;
-        flex-direction: column;
-        align-items: flex-start;
+        width: 100%;
+        flex: 0 0 auto;
         gap: 6px;
       }
       .utility-links {
-        width: auto;
+        width: 100%;
         flex: 0 0 auto;
         flex-direction: column;
         align-items: flex-end;
         gap: 6px;
         text-align: right;
+      }
+      .utility-session {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-content: flex-end;
+        align-items: flex-start;
       }
       .utility-contacts span,
       .utility-links a {
@@ -1873,7 +2568,110 @@
   </style>
 </head>
 <body>
+  <div class="auth-overlay" id="authOverlay" aria-live="polite">
+    <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <div class="auth-modal-header">
+        <div class="auth-modal-badge"><img src="logo.jpg" alt="College Of Computer Studies logo"></div>
+        <h2 id="authTitle">College Of Computer Studies</h2>
+        <p>Secure Access Portal</p>
+      </div>
+      <div class="auth-modal-body">
+        <div class="auth-panel active" data-auth-panel="login">
+          <form class="auth-form" id="loginForm" novalidate>
+            <div class="auth-field">
+              <label for="authIdentifier">Email or Username</label>
+              <input id="authIdentifier" type="text" placeholder="Enter email or username" autocomplete="username">
+            </div>
+            <div class="auth-field">
+              <label for="authPassword">Password</label>
+              <input id="authPassword" type="password" placeholder="Enter password" autocomplete="current-password">
+            </div>
 
+            <div id="authError" class="auth-error" aria-live="assertive"></div>
+            <button class="auth-btn-primary" type="submit">Login</button>
+          </form>
+          <div class="auth-link-row">
+            <span>Need an account?</span>
+            <button class="auth-link-btn" type="button" data-switch-auth="signup">Create Account</button>
+          </div>
+          <div class="auth-link-row">
+            <span>Forgot your password?</span>
+            <button class="auth-link-btn" type="button" data-switch-auth="forgot">Reset</button>
+          </div>
+          <div class="auth-legal">DLSJBC student portal demo. Enter your account credentials to continue.</div>
+        </div>
+
+        <div class="auth-panel" data-auth-panel="signup">
+          <form class="auth-form" id="signupForm" novalidate>
+            <div class="auth-field">
+              <label for="signupName">Full Name</label>
+              <input id="signupName" type="text" placeholder="Enter your full name">
+              <span class="auth-field-hint">Last Name, First Name, Middle Name</span>
+            </div>
+            <div class="auth-field">
+              <label for="signupUsername">Username</label>
+              <input id="signupUsername" type="text" placeholder="Choose a username" autocomplete="username">
+            </div>
+            <div class="auth-field">
+              <label for="signupEmail">Email Address</label>
+              <input id="signupEmail" type="email" placeholder="yourname@email.com">
+            </div>
+            <div class="auth-field">
+              <label for="signupPassword">Password</label>
+              <input id="signupPassword" type="password" placeholder="Create a password">
+              <div class="auth-password-meter" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="password-strength-label" id="passwordStrengthLabel"></div>
+            </div>
+            <div class="auth-field">
+              <label for="signupConfirmPassword">Confirm Password</label>
+              <input id="signupConfirmPassword" type="password" placeholder="Re-enter your password">
+              <div class="password-match" id="passwordMatchStatus"></div>
+            </div>
+            <div id="signupError" class="auth-error" aria-live="assertive"></div>
+            <button class="auth-btn-primary" type="submit">Create Account</button>
+          </form>
+          <div class="auth-link-row">
+            <span>Already have an account?</span>
+            <button class="auth-link-btn" type="button" data-switch-auth="login">Login</button>
+          </div>
+        </div>
+
+        <div class="auth-panel" data-auth-panel="forgot">
+          <form class="auth-form" id="forgotForm" novalidate>
+            <div class="auth-field">
+              <label for="forgotEmail">Email Address</label>
+              <input id="forgotEmail" type="email" placeholder="Enter your email address">
+            </div>
+            <div id="forgotError" class="auth-error" aria-live="assertive"></div>
+            <button class="auth-btn-primary" type="submit">Send Reset Link</button>
+          </form>
+          <div class="auth-link-row">
+            <span>Remembered it?</span>
+            <button class="auth-link-btn" type="button" data-switch-auth="login">Back to Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logout-confirm-overlay hidden" id="logoutConfirmOverlay" aria-live="assertive">
+    <div class="logout-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="logoutConfirmTitle">
+      <div class="logout-confirm-icon"><i class="fas fa-sign-out-alt"></i></div>
+      <h2 id="logoutConfirmTitle">Log out of your account?</h2>
+      <p>Your current session will be ended on this device.</p>
+      <div class="logout-confirm-actions">
+        <button class="logout-cancel-btn" id="logoutCancelBtn" type="button">Cancel</button>
+        <button class="logout-confirm-btn" id="logoutConfirmBtn" type="button">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-shell" id="pageShell">
   <!-- =========================================================================
        1. TOP UTILITY BAR (Institutional Access & Contact)
        ========================================================================= -->
@@ -1888,6 +2686,10 @@
         <a href="#portal" onclick="alert('Navigating to DLSJBC Student Portal (Demo)')">Student Portal</a>
         <a href="#lms" onclick="alert('Navigating to DLSJBC Canvas / LMS (Demo)')">Online LMS</a>
         <a href="#admissions" onclick="alert('Admissions for A.Y. 2026-2027 are currently open!')">Admissions <span class="utility-badge">Open</span></a>
+      </div>
+      <div class="utility-session" id="utilitySession" aria-live="polite">
+          <span class="utility-user-pill" id="userProfileBadge"><i class="fas fa-user-circle"></i> Guest</span>
+        <button class="utility-logout" id="logoutBtn" type="button">Logout</button>
       </div>
     </div>
   </aside>
@@ -1943,6 +2745,23 @@
       </nav>
     </div>
   </div>
+
+  <section class="admin-console" id="adminConsole" aria-label="Administrator controls" aria-hidden="true">
+    <div class="container">
+      <div class="admin-console-header">
+        <div class="admin-console-title"><i class="fas fa-user-shield"></i> Administrator Console</div>
+        <div class="admin-console-status" id="adminConsoleStatus">Admin privileges active</div>
+      </div>
+      <div class="admin-console-grid">
+        <button class="admin-console-action" type="button" data-admin-target="systemMetadata"><i class="fas fa-heartbeat"></i> System Diagnostics</button>
+        <button class="admin-console-action" type="button" data-admin-target="programs"><i class="fas fa-graduation-cap"></i> Academic Programs</button>
+        <button class="admin-console-action" type="button" data-admin-target="faculty"><i class="fas fa-users-cog"></i> Directory Hub</button>
+        <button class="admin-console-action" type="button" data-admin-target="students"><i class="fas fa-user-graduate"></i> Student Metrics</button>
+        <button class="admin-console-action" type="button" data-admin-target="bulletin"><i class="fas fa-bullhorn"></i> Bulletin Board</button>
+        <button class="admin-console-action" type="button" data-admin-target="official-downloads"><i class="fas fa-folder-open"></i> Resource Manager</button>
+      </div>
+    </div>
+  </section>
 
   <!-- =========================================================================
        4. HERO BANNER SECTION (With Photo 1 Placeholder)
@@ -2171,7 +2990,7 @@
 
       <div class="info-grid">
         <!-- 1. Latest News -->
-        <div class="info-card">
+        <div class="info-card" id="bulletin">
           <div class="info-card-header">
             <i class="fas fa-newspaper"></i>
             <h4 class="info-card-title">Latest News</h4>
@@ -2536,7 +3355,7 @@
           </div>
 
           <!-- Relocated Legacy Hit Counter & System Operational Badge -->
-          <div class="system-metadata-box">
+          <div class="system-metadata-box" id="systemMetadata">
             <div class="meta-title"><i class="fas fa-chart-line"></i> Relocated Visitor Analytics</div>
             <div class="counter-display" id="visitorCounter">024,891</div>
             <div class="system-status-indicator">
@@ -2568,6 +3387,446 @@
     const navScrollHint = document.getElementById('navScrollHint');
     const navScrollLeftHint = document.getElementById('navScrollLeftHint');
 
+    const defaultAccounts = {
+      dwight: {
+        username: 'dwight',
+        email: 'dwight@dlsjbc.edu.ph',
+        password: 'kiannady',
+        role: 'student',
+        name: 'Dwight',
+        greeting: 'Welcome, Dwight!'
+      },
+      admin: {
+        username: 'admin',
+        email: 'admin@dlsjbc.edu.ph',
+        password: 'admin',
+        role: 'admin',
+        name: 'Admin',
+        greeting: 'Welcome, Admin!'
+      }
+    };
+
+    const STORAGE_KEYS = {
+      accounts: 'dlsjbc_accounts',
+      currentUser: 'currentUser'
+    };
+
+    function getStoredAccounts() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEYS.accounts) || 'null');
+        if (saved && typeof saved === 'object') {
+          return saved;
+        }
+      } catch (error) {
+        console.warn('Unable to read stored accounts:', error);
+      }
+      localStorage.setItem(STORAGE_KEYS.accounts, JSON.stringify(defaultAccounts));
+      return { ...defaultAccounts };
+    }
+
+    function saveStoredAccounts(accounts) {
+      localStorage.setItem(STORAGE_KEYS.accounts, JSON.stringify(accounts));
+    }
+
+    function showToast(message) {
+      const existingToast = document.querySelector('.toast');
+      if (existingToast) {
+        existingToast.remove();
+      }
+
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      requestAnimationFrame(() => toast.classList.add('show'));
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 260);
+      }, 2600);
+    }
+
+    function updateUserBadge() {
+      const badge = document.getElementById('userProfileBadge');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const sessionWrapper = document.getElementById('utilitySession');
+
+      if (!badge || !logoutBtn || !sessionWrapper) return;
+
+      const current = (() => {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEYS.currentUser) || 'null');
+        } catch (error) {
+          return null;
+        }
+      })();
+
+      const isAdmin = Boolean(current && current.role === 'admin');
+      document.body.classList.toggle('admin-mode', isAdmin);
+      const adminConsole = document.getElementById('adminConsole');
+      if (adminConsole) adminConsole.setAttribute('aria-hidden', String(!isAdmin));
+
+      if (current && current.name) {
+        badge.innerHTML = '<i class="fas fa-user-circle"></i> ' + current.name;
+        logoutBtn.style.display = 'inline-flex';
+        sessionWrapper.style.display = 'inline-flex';
+      } else {
+        badge.innerHTML = '<i class="fas fa-user-circle"></i> Guest';
+        logoutBtn.style.display = 'none';
+        sessionWrapper.style.display = 'none';
+      }
+    }
+
+    function setupAdminConsole() {
+      document.querySelectorAll('[data-admin-target]').forEach(button => {
+        button.addEventListener('click', () => {
+          const targetId = button.dataset.adminTarget;
+          if (targetId === 'official-downloads') activateTab(targetId);
+          const target = targetId === 'official-downloads'
+            ? document.querySelector('.tabs-section')
+            : document.getElementById(targetId);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    }
+
+    function setAuthView(mode) {
+      const panels = document.querySelectorAll('[data-auth-panel]');
+      const tabs = document.querySelectorAll('[data-auth-tab]');
+
+      panels.forEach(panel => {
+        panel.classList.toggle('active', panel.dataset.authPanel === mode);
+      });
+
+      tabs.forEach(button => {
+        button.classList.toggle('active', button.dataset.authTab === mode);
+      });
+
+      document.getElementById('authTitle').textContent = mode === 'login' ? 'College Of Computer Studies' : mode === 'signup' ? 'Create Account' : 'Reset Password';
+    }
+
+    function showAuthError(elementId, message) {
+      const errorBox = document.getElementById(elementId);
+      if (!errorBox) return;
+      errorBox.textContent = message;
+      errorBox.classList.add('show');
+    }
+
+    function clearAuthErrors() {
+      document.querySelectorAll('.auth-error').forEach(error => {
+        error.textContent = '';
+        error.classList.remove('show');
+      });
+      document.querySelectorAll('.auth-field input.invalid').forEach(input => input.classList.remove('invalid'));
+    }
+
+    function getPasswordStrength(password) {
+      const value = String(password || '');
+      let score = 0;
+
+      if (!value) return { score: 0, label: '', level: 'none' };
+      if (value.length >= 6) score += 1;
+      if (value.length >= 10) score += 1;
+      if (/[A-Z]/.test(value) && /[0-9]/.test(value)) score += 1;
+      if (/[^A-Za-z0-9]/.test(value)) score += 1;
+
+      if (score <= 1) return { score: 1, label: 'Weak', level: 'weak' };
+      if (score <= 2) return { score: 2, label: 'Medium', level: 'medium' };
+      return { score: 3, label: 'Strong', level: 'strong' };
+    }
+
+    function updateSignupPasswordStrength() {
+      const passwordInput = document.getElementById('signupPassword');
+      const meterBars = document.querySelectorAll('#signupPassword ~ .auth-password-meter span');
+      const strengthLabel = document.getElementById('passwordStrengthLabel');
+
+      if (!passwordInput || !meterBars.length || !strengthLabel) return;
+
+      const password = passwordInput.value;
+      const strength = getPasswordStrength(password);
+
+      meterBars.forEach((bar, index) => {
+        bar.classList.remove('active', 'weak', 'medium', 'strong');
+        if (index < strength.score) {
+          bar.classList.add(strength.level === 'weak' ? 'weak' : strength.level === 'medium' ? 'medium' : 'strong');
+        }
+      });
+
+      if (!password) {
+        strengthLabel.textContent = '';
+        strengthLabel.className = 'password-strength-label';
+        return;
+      }
+
+      strengthLabel.textContent = 'Password strength: ' + strength.label;
+      strengthLabel.className = 'password-strength-label ' + strength.level;
+    }
+
+    function updatePasswordMatchStatus() {
+      const passwordInput = document.getElementById('signupPassword');
+      const confirmInput = document.getElementById('signupConfirmPassword');
+      const matchStatus = document.getElementById('passwordMatchStatus');
+
+      if (!passwordInput || !confirmInput || !matchStatus) return;
+
+      const password = passwordInput.value;
+      const confirm = confirmInput.value;
+
+      if (!confirm) {
+        matchStatus.textContent = '';
+        matchStatus.className = 'password-match';
+        return;
+      }
+
+      if (confirm === password && password.length >= 6) {
+        matchStatus.textContent = 'Passwords match';
+        matchStatus.className = 'password-match ok';
+      } else {
+        matchStatus.textContent = 'Passwords do not match';
+        matchStatus.className = 'password-match no';
+      }
+    }
+
+    function validateEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function getSelectedAccountByIdentifier(identifier) {
+      const accounts = getStoredAccounts();
+      const normalized = String(identifier || '').trim().toLowerCase();
+
+      if (!normalized) return null;
+
+      return Object.values(accounts).find(account => {
+        const matchesUser = account.username && account.username.toLowerCase() === normalized;
+        const matchesEmail = account.email && account.email.toLowerCase() === normalized;
+        const matchesName = account.name && account.name.toLowerCase() === normalized;
+        return matchesUser || matchesEmail || matchesName;
+      }) || null;
+    }
+
+    function handleQuickDemoFill(accountKey) {
+      const accounts = getStoredAccounts();
+      const account = accounts[accountKey];
+      if (!account) return;
+
+      document.getElementById('authIdentifier').value = account.email;
+      document.getElementById('authPassword').value = account.password;
+      clearAuthErrors();
+    }
+
+    function loginUser(account) {
+      const userSession = {
+        username: account.username,
+        email: account.email,
+        role: account.role,
+        name: account.name,
+        greeting: account.greeting || 'Welcome!'
+      };
+
+      localStorage.setItem(STORAGE_KEYS.currentUser, JSON.stringify(userSession));
+      updateUserBadge();
+      document.getElementById('authOverlay').classList.add('hidden');
+      document.body.classList.remove('auth-locked');
+      document.getElementById('pageShell').style.filter = '';
+      showToast('Welcome, ' + account.name + ' (' + account.role + ')');
+      window.scrollTo(0, 0);
+    }
+
+    function handleLoginSubmit(event) {
+      event.preventDefault();
+      clearAuthErrors();
+
+      const identifier = document.getElementById('authIdentifier');
+      const password = document.getElementById('authPassword');
+      const errors = [];
+
+      if (!identifier.value.trim()) {
+        identifier.classList.add('invalid');
+        errors.push('Please enter your email or username.');
+      }
+
+      if (!password.value.trim()) {
+        password.classList.add('invalid');
+        errors.push('Please enter your password.');
+      }
+
+      if (errors.length) {
+        showAuthError('authError', errors.join(' '));
+        return;
+      }
+
+      const account = getSelectedAccountByIdentifier(identifier.value);
+      if (!account) {
+        identifier.classList.add('invalid');
+        password.classList.add('invalid');
+        showAuthError('authError', 'Incorrect email/username or password. Please try again.');
+        return;
+      }
+
+      if (account.password !== password.value) {
+        identifier.classList.add('invalid');
+        password.classList.add('invalid');
+        showAuthError('authError', 'Incorrect email/username or password. Please try again.');
+        return;
+      }
+
+      loginUser(account);
+    }
+
+    function handleSignupSubmit(event) {
+      event.preventDefault();
+      clearAuthErrors();
+
+      const fullName = document.getElementById('signupName');
+      const username = document.getElementById('signupUsername');
+      const email = document.getElementById('signupEmail');
+      const password = document.getElementById('signupPassword');
+      const confirmPassword = document.getElementById('signupConfirmPassword');
+      const invalidFields = [];
+
+      if (!fullName.value.trim()) {
+        fullName.classList.add('invalid');
+        invalidFields.push('Full name is required.');
+      }
+
+      if (!username.value.trim()) {
+        username.classList.add('invalid');
+        invalidFields.push('Username is required.');
+      }
+
+      if (!email.value.trim() || !validateEmail(email.value.trim())) {
+        email.classList.add('invalid');
+        invalidFields.push('Please enter a valid email address.');
+      }
+
+      const passwordStrength = getPasswordStrength(password.value);
+      if (!password.value.trim() || password.value.length < 6) {
+        password.classList.add('invalid');
+        invalidFields.push('Password must be at least 6 characters long.');
+      } else if (passwordStrength.level === 'weak') {
+        password.classList.add('invalid');
+        invalidFields.push('Password is too weak. Add more letters, numbers, or symbols.');
+      }
+
+      if (!confirmPassword.value.trim() || confirmPassword.value !== password.value) {
+        confirmPassword.classList.add('invalid');
+        invalidFields.push('Passwords do not match.');
+      }
+
+      if (invalidFields.length) {
+        showAuthError('signupError', invalidFields.join(' '));
+        return;
+      }
+
+      const accounts = getStoredAccounts();
+      const normalizedUsername = username.value.trim().toLowerCase();
+      const normalizedEmail = email.value.trim().toLowerCase();
+      if (accounts[normalizedEmail]) {
+        email.classList.add('invalid');
+        showAuthError('signupError', 'An account with this email already exists.');
+        return;
+      }
+
+      const usernameExists = Object.values(accounts).some(account => account.username.toLowerCase() === normalizedUsername);
+      if (usernameExists) {
+        username.classList.add('invalid');
+        showAuthError('signupError', 'That username is already in use.');
+        return;
+      }
+
+      const newUser = {
+        username: normalizedUsername,
+        email: normalizedEmail,
+        password: password.value,
+        role: 'student',
+        name: fullName.value.trim(),
+        greeting: 'Welcome, ' + fullName.value.trim() + '!'
+      };
+
+      accounts[normalizedEmail] = newUser;
+      saveStoredAccounts(accounts);
+
+      document.getElementById('signupForm').reset();
+      setAuthView('login');
+      document.getElementById('authIdentifier').value = normalizedEmail;
+      document.getElementById('authPassword').value = password.value;
+      showToast('Account created successfully. You can now log in.');
+    }
+
+    function handleForgotSubmit(event) {
+      event.preventDefault();
+      clearAuthErrors();
+
+      const email = document.getElementById('forgotEmail');
+      if (!email.value.trim() || !validateEmail(email.value.trim())) {
+        email.classList.add('invalid');
+        showAuthError('forgotError', 'Please enter a valid email address.');
+        return;
+      }
+
+      const message = 'Password reset link sent to ' + email.value.trim();
+      alert(message);
+      document.getElementById('forgotForm').reset();
+      setAuthView('login');
+      showToast('Reset instructions sent.');
+    }
+
+    function openLogoutConfirmation() {
+      const overlay = document.getElementById('logoutConfirmOverlay');
+      if (!overlay) return;
+      overlay.classList.remove('hidden');
+      document.getElementById('logoutConfirmBtn').focus();
+    }
+
+    function closeLogoutConfirmation() {
+      const overlay = document.getElementById('logoutConfirmOverlay');
+      if (!overlay) return;
+      overlay.classList.add('hidden');
+      document.getElementById('logoutBtn').focus();
+    }
+
+    function logoutUser() {
+      localStorage.removeItem(STORAGE_KEYS.currentUser);
+      updateUserBadge();
+      closeLogoutConfirmation();
+      document.getElementById('authOverlay').classList.remove('hidden');
+      document.body.classList.add('auth-locked');
+      setAuthView('login');
+      showToast('You have been logged out.');
+      window.scrollTo(0, 0);
+      document.getElementById('authIdentifier').focus();
+    }
+
+    function initializeAuth() {
+      const overlay = document.getElementById('authOverlay');
+      const pageShell = document.getElementById('pageShell');
+
+      const currentUser = (() => {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEYS.currentUser) || 'null');
+        } catch (error) {
+          return null;
+        }
+      })();
+      const hasValidSession = currentUser && currentUser.name && currentUser.role
+        && (currentUser.role === 'admin' || currentUser.role === 'student');
+
+      if (hasValidSession) {
+        if (overlay) overlay.classList.add('hidden');
+        document.body.classList.remove('auth-locked');
+        if (pageShell) pageShell.setAttribute('aria-hidden', 'false');
+      } else {
+        localStorage.removeItem(STORAGE_KEYS.currentUser);
+        document.body.classList.add('auth-locked');
+        if (overlay) overlay.classList.remove('hidden');
+        if (pageShell) pageShell.setAttribute('aria-hidden', 'true');
+      }
+
+      updateUserBadge();
+      setAuthView('login');
+    }
+
     function updateNavScrollHint() {
       if (!mainNavList || !navScrollHint || !navScrollLeftHint) return;
 
@@ -2584,7 +3843,6 @@
       updateNavScrollHint();
     }
 
-    // Interactive Navigation Link Active States
     const navLinks = document.querySelectorAll('.nav-link');
 
     function setActiveNavLink(route) {
@@ -2646,13 +3904,10 @@
     window.addEventListener('popstate', syncRouteFromHash);
     window.addEventListener('hashchange', syncRouteFromHash);
 
-    // 3. Department Tabs Controller
     function switchTab(event, tabId) {
-      // Remove active class from all tab buttons & contents
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-      // Activate chosen tab
       event.currentTarget.classList.add('active');
       const targetContent = document.getElementById(tabId);
       if (targetContent) {
@@ -2660,7 +3915,6 @@
       }
     }
 
-    // 4. Subtle Visitor Counter Live Simulation
     document.addEventListener('DOMContentLoaded', () => {
       const initialTabId = window.location.hash.slice(1);
       const initialTabButton = document.querySelector(`.tab-btn[data-tab="${initialTabId}"]`);
@@ -2672,7 +3926,6 @@
       const counterEl = document.getElementById('visitorCounter');
       if (counterEl) {
         let baseCount = 24891;
-        // Check localStorage for simulated counter increment
         let stored = localStorage.getItem('dlsjbc_visitor_count');
         if (stored) {
           baseCount = parseInt(stored, 10) + 1;
@@ -2682,7 +3935,64 @@
         localStorage.setItem('dlsjbc_visitor_count', baseCount);
         counterEl.textContent = baseCount.toString().padStart(6, '0');
       }
+
+      updateUserBadge();
+      initializeAuth();
+      setupAdminConsole();
+
+      document.getElementById('loginForm').addEventListener('submit', handleLoginSubmit);
+      document.getElementById('signupForm').addEventListener('submit', handleSignupSubmit);
+      document.getElementById('forgotForm').addEventListener('submit', handleForgotSubmit);
+      document.getElementById('logoutBtn').addEventListener('click', openLogoutConfirmation);
+      document.getElementById('logoutCancelBtn').addEventListener('click', closeLogoutConfirmation);
+      document.getElementById('logoutConfirmBtn').addEventListener('click', logoutUser);
+
+      document.querySelectorAll('[data-demo-user]').forEach(button => {
+        button.addEventListener('click', () => handleQuickDemoFill(button.dataset.demoUser));
+      });
+
+      document.querySelectorAll('[data-switch-auth]').forEach(button => {
+        button.addEventListener('click', () => setAuthView(button.dataset.switchAuth));
+      });
+
+      document.querySelectorAll('[data-auth-tab]').forEach(button => {
+        button.addEventListener('click', () => setAuthView(button.dataset.authTab));
+      });
+
+      document.getElementById('authIdentifier').addEventListener('input', () => {
+        document.getElementById('authIdentifier').classList.remove('invalid');
+        clearAuthErrors();
+      });
+      document.getElementById('authPassword').addEventListener('input', () => {
+        document.getElementById('authPassword').classList.remove('invalid');
+        clearAuthErrors();
+      });
+      document.getElementById('signupName').addEventListener('input', () => document.getElementById('signupName').classList.remove('invalid'));
+      document.getElementById('signupUsername').addEventListener('input', () => {
+        document.getElementById('signupUsername').classList.remove('invalid');
+        clearAuthErrors();
+      });
+      document.getElementById('signupEmail').addEventListener('input', () => document.getElementById('signupEmail').classList.remove('invalid'));
+      document.getElementById('signupPassword').addEventListener('input', () => {
+        document.getElementById('signupPassword').classList.remove('invalid');
+        updateSignupPasswordStrength();
+        updatePasswordMatchStatus();
+        clearAuthErrors();
+      });
+      document.getElementById('signupConfirmPassword').addEventListener('input', () => {
+        document.getElementById('signupConfirmPassword').classList.remove('invalid');
+        updatePasswordMatchStatus();
+        clearAuthErrors();
+      });
+      document.getElementById('forgotEmail').addEventListener('input', () => {
+        document.getElementById('forgotEmail').classList.remove('invalid');
+        clearAuthErrors();
+      });
+
+      updateSignupPasswordStrength();
+      updatePasswordMatchStatus();
     });
   </script>
+</div>
 </body>
 </html>
