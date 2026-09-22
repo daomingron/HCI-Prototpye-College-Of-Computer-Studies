@@ -1,0 +1,145 @@
+FIGMA AI INTEGRATION PROMPT
+
+Recreate and integrate this existing College of Computer Studies website UI into Figma as a complete responsive design system and interactive prototype.
+
+Project context:
+- Product: College of Computer Studies portal for De La Salle John Bosco College.
+- Brand: College Of Computer Studies, De La Salle John Bosco College, Mangagoy, Bislig City.
+- Use the existing project logo asset: logo.jpg.
+- Preserve the current green, gold, white, and light-gray color palette. Do not replace the palette with unrelated colors.
+- The interface must feel institutional, accessible, organized, and suitable for repeated student and administrator use.
+
+Create these Figma pages or sections:
+
+1. Design System
+- Define color styles based on the existing green/gold institutional palette.
+- Define typography styles for headings, labels, body text, buttons, navigation, status messages, and metadata.
+- Define spacing, border radius, shadows, icon usage, button states, input states, and responsive breakpoints.
+- Use reusable components and variants instead of duplicated visual elements.
+
+2. Authentication Screens
+Create responsive Login, Create Account, and Forgot Password screens.
+
+Login screen:
+- Use the College of Computer Studies logo instead of a generic user or shield icon.
+- Display the heading: College Of Computer Studies.
+- Use the subtitle: Secure Access Portal.
+- Include an Email or Username field with placeholder: Enter email or username.
+- Include a Password field.
+- Include a Login button.
+- Include a Create Account link below the form.
+- Include a Forgot Password or Reset link below the form.
+- Show clear validation states for empty fields and incorrect credentials.
+
+Create Account screen:
+- Include Full Name with the instruction: Last Name, First Name, Middle Name.
+- Include a required Username field.
+- Include Email Address.
+- Include Password.
+- Include Confirm Password.
+- Include a password strength indicator with Weak, Medium, and Strong states.
+- Include password match feedback.
+- Prevent account creation when required fields are blank, the password is weak, passwords do not match, the email already exists, or the username already exists.
+- Show inline validation messages and invalid input states.
+- Include the green Create Account button and a Login link below the form.
+
+Forgot Password screen:
+- Include an Email Address field.
+- Include a Send Reset Link button.
+- Include validation for an empty or invalid email.
+- Include a link back to Login.
+
+Responsive authentication behavior:
+- Desktop: use a two-panel modal layout with the green branded panel on the left and the form panel on the right.
+- Tablet: preserve the two-panel structure when space allows, otherwise use a compact stacked layout.
+- Smartphone: use a compact green header with a small logo and title. Keep the form inside a constrained modal with a vertical scroller so the form and buttons are never cropped.
+- Use a plain light project-palette background behind the authentication modal. Do not use a blurred page or browser-native confirmation prompt.
+- Maintain readable text, accessible contrast, visible focus states, and touch-friendly controls.
+
+3. Main Portal Shell
+- Add the institutional utility header with:
+  - info@dlsjbc.edu.ph
+  - (086) 853-2244
+  - Mangagoy, Bislig City
+  - Student Portal
+  - Online LMS
+  - Admissions Open
+- On tablet, align contact information as an even left stack and portal links/session controls as an even right stack.
+- On mobile, use balanced columns for contacts and portal links, followed by a right-aligned user session row.
+- Display the authenticated user as a simple name-only badge, such as Dwight or Admin. Do not display the text "Logged in as:" or the role suffix "(student)".
+- Include a Logout button that opens an in-page confirmation container with Cancel and Log Out buttons. Do not use a browser-native confirm dialog.
+
+Main navigation:
+- Home
+- About CCS
+- Programs Offered
+- Resources
+- Academic Calendar
+- Faculty & Staff
+- Students
+- Gallery
+- Downloads
+- Contact Us
+
+Main content:
+- Create a hero section for the College of Computer Studies.
+- Add About CCS content.
+- Add Academic Programs cards for BS Information Technology and BS Computer Science.
+- Add announcements, latest news, events, and student quick links.
+- Add Faculty and Staff directory cards for Dean, Program In-Charge, Moderator, and Faculty.
+- Add student population and enrollment statistics.
+- Add student activities/gallery.
+- Add official downloads and clearance resources.
+- Add a footer with contact details, visitor analytics, system status, privacy, terms, and accessibility links.
+
+4. Admin Experience
+Create a separate Admin Console variant that is visible only when the authenticated user has the admin role.
+
+Admin controls:
+- System Diagnostics
+- Academic Programs
+- Directory Hub
+- Student Metrics
+- Bulletin Board
+- Resource Manager
+
+Admin screens and interactions should support:
+- System metadata, live hit counter, status indicators, and diagnostics.
+- Create, read, update, and delete BSIT and BSCS curriculum records.
+- Manage faculty/staff directory entries.
+- View aggregated enrollment and department metrics.
+- Create, edit, publish, and remove alerts categorized as URGENT, ACADEMIC, LAB, or SCHOLARSHIP.
+- Manage download links and student clearance resources.
+- Clearly distinguish admin-only controls from the regular student portal.
+- Include empty, loading, success, validation-error, unauthorized, and server-error states.
+
+5. Prototype Interactions
+- Link Login, Create Account, and Forgot Password screens.
+- Demonstrate empty-field validation and incorrect-credential errors.
+- Demonstrate password strength and password-match states.
+- Demonstrate successful login for Student and Admin roles.
+- Demonstrate the Admin Console appearing only for Admin.
+- Demonstrate the student view without admin controls.
+- Demonstrate the logout confirmation container, including Cancel and Log Out flows.
+- Demonstrate responsive behavior across desktop, tablet, and smartphone frames.
+
+6. Accessibility and HCI Requirements
+- Use clear hierarchy, recognition over recall, consistent labels, visible feedback, and predictable navigation.
+- Provide accessible names for buttons and form fields.
+- Maintain keyboard focus order and visible focus states.
+- Ensure touch targets are large enough for mobile.
+- Avoid overlapping text, cropped forms, horizontal overflow, and excessive decorative elements.
+- Keep all important actions visible or reachable through a clear scroll area.
+- Use consistent error placement directly near the related field or form.
+
+Implementation notes:
+- Convert repeated UI elements into Figma components with variants.
+- Name layers clearly and organize them by page, section, and component.
+- Create desktop, tablet, and smartphone frames.
+- Use Auto Layout for modal content, forms, utility bars, navigation, cards, and admin controls.
+- Use constraints and responsive resizing rules so text and controls do not overlap or shift unpredictably.
+- Use local assets from the project where available, especially logo.jpg and faculty images.
+- Do not invent a different brand identity or color system.
+
+CONTINUATION INSTRUCTION:
+If the AI generation stops because the available credits or generation limit has been reached, continue from the exact last completed frame, component, section, or interaction. Do not restart the project, do not overwrite completed work, and do not change the established color palette, typography, component names, responsive rules, or interaction behavior. First inspect what has already been generated, identify the next unfinished requirement in this prompt, and continue in the same visual and structural style until the full Figma integration is complete.
